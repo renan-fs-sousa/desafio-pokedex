@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio - Pokédex</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <div id="overlaySlideHero" class="overlay-slide-hero"></div>
+    <div class="container-bg-slide-hero-red"></div>
+    <div class="container-bg-slide-hero-blue"></div>
+    <div class="container-bg-search-bar"></div>
+    <div class="page">
+        <header>
+            <div class="container">
+                <a href="#" class="logo">
+                    <img 
+                        src="images/logo-pokemon.svg" 
+                        alt="Logo Pokémon" 
+                        title="Logo Pokémon">
+                </a>
+                <span>Case Study -> Code<strong>Boost</strong></span>
+            </div>
+        </header>
+        <section id="hero">
+            <div id="hero1" class="hero">
+                <div class="container">
+                    <div class="tag">
+                        <div class="circle-bag">
+                        </div>
+                        <img src="images/bag.svg" alt="Icon of bag">
+                        <span>pokedex</span>
+                    </div>
+                    <h1>Who is that Pokémon?</h1>
+                    <p>The perfect guide for those who want to hunt Pokémons around the world</p>
+                    <div class="arrow-down">
+                        <a href="#" onclick="setFocusToTextBox(event)">
+                            <img src="images/arrow-down-red.svg" alt="Arrow down color red">
+                        </a>
+                    </div>
+                    <div class="container-button-slide">
+                        <div class="button-slide active"></div>
+                        <div class="button-slide"></div>
+                    </div>
+                    <div class="big-pokeball">
+                        <img src="images/stars-pokeball.svg" alt="3 Stars">
+                        <img id="bigPokeball" src="images/big-red-pokeball.svg" alt="Big pokeball red in center">
+                    </div>
+                </div>
+            </div>
+            <div id="hero2" class="hero">
+                <div class="container">
+                    <div class="tag-blue">
+                        <div class="circle-bag-blue">
+                        </div>
+                        <img src="images/bag.svg" alt="Icon of bag">
+                        <span>pokedex</span>
+                    </div>
+                    <h1>Catch them all!</h1>
+                    <p>The perfect guide for those who want to hunt Pokémons around the world</p>
+                    <div class="arrow-down">
+                        <a href="#" onclick="setFocusToTextBox(event)">
+                            <img src="images/arrow-down-blue.svg" alt="Arrow down color blue">
+                        </a>
+                    </div>
+                    <div class="container-button-slide">
+                        <div class="button-slide"></div>
+                        <div class="button-slide active"></div>
+                    </div>
+                    <div class="big-pokeball">
+                        <img src="images/stars-pokeball.svg" alt="3 Stars">
+                        <img id="bigPokeball-blue" src="images/big-blue-pokeball.svg" alt="Big pokeball blue in center">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="search">
+            <div class="container search-bar">
+                <h2>Select your Pokémon</h2>
+                <div class="search">
+                    <button type="button" class="search-button">
+                        <img src="/images/search-icon.svg" alt="">
+                    </button>
+                    <input id="searchInput" class="search-input" type="text" placeholder="Search name or code">
+                </div>
+            </div>
+        </section>
+        <section id="main">
+            <div class="container pokemon-data">
+                <div class="menu-left">
+                    <ul class="item-menu">
+                    </ul>
+                </div>
+                <div class="container-data">
+                    <div class="count">
+                        <img src="images/icon-red-ball.svg" alt="">
+                        <span id="counter">150 Pokémons</span>
+                    </div>
+                    <div class="box-showing-data-pokemon">
+                        <span id="showing-data-pokemon">Showing </span>
+                    </div>
+                    <div class="pokemon-list">
+                    </div>
+                    <button class="load-more-button">Load more Pokémons</button>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <div class="container page">
+            <div class="footer-text">
+                <strong>Módulo JavaScript</strong>
+                <p>Consumindo e exibindo dados de uma API</p>
+            </div>
+            <a href="#" class="logo">
+                <img 
+                    src="images/logo.svg" 
+                    alt="Logo da Codeboost" 
+                    title="Logo da Codeboost">
+            </a>
+        </div>
+    </footer>
+    <div class="overlay" id="overlay">
+        <div class="spinner">
+            <img class="pokeball-spin" src="images/poke-spinner.svg" alt="">
+            <span>Loading...</span>
+        </div>
+    </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="close" onclick="closeModal()">
+            </button>
+            <div class="images-modal">
+                <div class="icon-type-modal">
+                    <img id="iconTypePokemon" src="/images/fire.svg" alt="">
+                </div>
+                <img id="imagePokemon" src="" alt="">
+            </div>
+            <div class="info-modal">
+                <p id="namePokemon" class="title-modal">Charmeleon</p><span id="idPokemon" class="title-modal-id-pokemon">#005</span>
+                <div class="container-type-modal">
+                    <div id="groupType1" class="group-type-modal">
+                        <div id="bgType1" class="box-type-modal">
+                        </div>
+                        <div id="textType1" class="text-type-modal">
+                            Fire
+                        </div>
+                    </div>
+                    <div id="groupType2" class="group-type-modal" style="display: none;">
+                        <div id="bgType2" class="box-type-modal">
+                        </div>
+                        <div id="textType2" class="text-type-modal">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="measurements-modal">
+                    <div class="box-info">
+                        <p class="head-grid-info-modal">Height</p> 
+                        <p id="height" class="content-grid-info-modal">1.7m</p>
+                    </div> 
+                    <div class="box-info">
+                        <p class="head-grid-info-modal">Weight</p> 
+                        <p id="weight" class="content-grid-info-modal">90.5kg</p>
+                    </div>
+                    <div class="box-info">
+                        <p class="head-grid-info-modal">Abilities</p> 
+                        <p id="ability" class="content-grid-info-modal">Blaze</p>
+                    </div>
+                </div>
+
+                <!-- <p class="min-title-modal">Weaknesses</p>
+                <div class="container-type-modal">
+                    <div class="group-type-modal">
+                        <div class="box-type-modal">
+                        </div>
+                        <div class="text-type-modal">
+                            Fire
+                        </div>
+                    </div>
+                    <div class="group-type-modal">
+                        <div class="box-type-modal">
+                        </div>
+                        <div class="text-type-modal">
+                            Psychic
+                        </div>
+                    </div>
+                </div> -->
+
+                <div class="stats">
+                    <p class="min-title-modal">Stats</p>
+                    <div class="container-stats">
+                        <div class="title-stats">
+                            HP
+                        </div>
+                        <div class="info-data-stats">
+                            <div id="hp" class="info-data-stats-bar-value">
+                            </div>
+                            <div class="info-data-stats-bar">
+                            </div>
+                            <div class="info-data-stats-bar">
+                            </div>
+                            <div class="info-data-stats-bar">
+                            </div>
+                            <div class="info-data-stats-bar">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-stats">
+                        <div class="title-stats">
+                            Attack
+                        </div>
+                        <div class="info-data-stats">
+                            <div id="attack" class="info-data-stats-bar-value">
+                            </div>
+                            <div class="info-data-stats-bar">
+                            </div>
+                            <div class="info-data-stats-bar">
+                            </div>
+                            <div class="info-data-stats-bar">
+                            </div>
+                            <div class="info-data-stats-bar">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-stats">
+                        <div class="title-stats">
+                            Defense
+                        </div>
+                        <div class="info-data-stats">
+                            <div id="defense" class="info-data-stats-bar-value">
+                            </div>
+                            <div class="info-data-stats-bar">
+                            </div>
+                            <div class="info-data-stats-bar">
+                            </div>
+                            <div class="info-data-stats-bar">
+                            </div>
+                            <div class="info-data-stats-bar">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-stats">
+                        <div  class="title-stats">
+                            Sp. attack
+                        </div>
+                        <div class="info-data-stats">
+                            <div id="spattack" class="info-data-stats-bar-value">
+                            </div>
+                            <div class="info-data-stats-bar">
+                            </div>
+                            <div class="info-data-stats-bar">
+                            </div>
+                            <div class="info-data-stats-bar">
+                            </div>
+                            <div class="info-data-stats-bar">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-stats">
+                        <div class="title-stats">
+                            Sp. defense
+                        </div>
+                        <div class="info-data-stats">
+                            <div id="spdefense" class="info-data-stats-bar-value">
+                            </div>
+                            <div class="info-data-stats-bar">
+                            </div>
+                            <div class="info-data-stats-bar">
+                            </div>
+                            <div class="info-data-stats-bar">
+                            </div>
+                            <div class="info-data-stats-bar">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-stats">
+                        <div class="title-stats">
+                            Speed
+                        </div>
+                        <div class="info-data-stats">
+                            <div id="speed" class="info-data-stats-bar-value">
+                            </div>
+                            <div class="info-data-stats-bar">
+                            </div>
+                            <div class="info-data-stats-bar">
+                            </div>
+                            <div class="info-data-stats-bar">
+                            </div>
+                            <div class="info-data-stats-bar">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="js/script.js"></script>
+</body>
+</html>
